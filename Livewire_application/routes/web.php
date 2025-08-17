@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Post;
+use App\Livewire\Posts;
 use App\Livewire\User ;
 use App\Livewire\AddPost;   
 Route::get('/', function () {
@@ -17,7 +17,7 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('dashboard');
 
-Route::get('/dashboard', Post::class)->name('dashboard');
+Route::get('/dashboard', Posts::class)->name('dashboard');
 Route::get('/users', User::class)->name('users.index');
 Route::get('/posts', AddPost::class)->name('posts.index');
 

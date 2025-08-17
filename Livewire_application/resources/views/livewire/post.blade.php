@@ -1,4 +1,5 @@
 <div>
+    
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -65,15 +66,31 @@
                 <!-- Header Row -->
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
                     <!-- Add Post Button -->
-                    <a href="{{ route('posts.index') }}" wire:navigate
+                    <button wire:click="openCreateModal"
                         class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                bg-gradient-to-br from-purple-600 to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
                         <span
                             class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white rounded-md border border-gray-300 group-hover:bg-transparent">
                             Add Post
                         </span>
-                    </a>
+                    </button>
+
+                    
                 </div>
+                @if (session()->has('success'))
+    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-3" role="alert">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-3" role="alert">
+        {{ session('error') }}
+    </div>
+@endif
+
+                
+       
 
                 <!-- Table -->
                 <div class="overflow-x-auto">
@@ -129,7 +146,75 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+<div>
+    <x-dialog-modal wire:model="showModal" maxWidth="2xl">
+        <!-- Modal Title -->
+        <x-slot name="title">
+            {{ $post_id ? 'Edit Post' : 'Add Post' }}
+        </x-slot>
+
+        <!-- Modal Content -->
+        <x-slot name="content" class="space-y-4">
+            <input type="text" wire:model.defer="title" placeholder="Title"
+                   class="w-full rounded border p-2 text-gray-900 focus:ring focus:ring-blue-200">
+            
+            <textarea wire:model.defer="content" placeholder="Content"
+                      class="w-full rounded border p-2 text-gray-900 focus:ring focus:ring-blue-200 mt-2" rows="5"></textarea>
+        </x-slot>
+
+        <!-- Modal Footer -->
+        <x-slot name="footer" class="flex justify-end {{ is_null($post_id) ? 'space-x-3' : '' }}">
+            <div class="flex gap-3">
+            <!-- Cancel Button -->
+            <button wire:click="closeModal"
+                    class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
+                           bg-gradient-to-br from-gray-400 to-gray-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-gray-300">
+                <span class="relative px-4 py-2.5 transition-all ease-in duration-75 bg-white rounded-md border border-gray-300 group-hover:bg-transparent">
+                    Cancel
+                </span>
+            </button>
+
+            <!-- Save Button -->
+            <button wire:click="save"
+                    class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
+                           bg-gradient-to-br from-purple-600 to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
+                <span class="relative px-4 py-2.5 transition-all ease-in duration-75 bg-white rounded-md border border-gray-300 group-hover:bg-transparent">
+                    {{ $post_id ? 'Update' : 'Save' }}
+                </span>
+            </button>
+            </div>
+        </x-slot>
+    </x-dialog-modal>
+   
 </div>
+
+
+
+
+
+
+
+
+</div>
+
+<script>
+    window.addEventListener('swal:modal', event => {
+        Swal.fire({
+            title: event.detail.title,
+            text: event.detail.text || '',
+            icon: event.detail.icon,
+            timer: event.detail.timer || 2000,
+            showConfirmButton: false
+        });
+    });
+</script>
+
 
 <!-- DataTables Initialization -->
 <script>
