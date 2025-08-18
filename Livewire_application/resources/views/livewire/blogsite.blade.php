@@ -1,6 +1,15 @@
 <div>
-         <div class="font-sans text-gray-900 antialiased">
-    
+    {{-- Nothing in the world is as soft and yielding as water. --}}
+
+
+
+
+
+
+           <div class="font-sans text-gray-900 antialiased">
+            {{-- resources/views/layouts/livewire.blade.php --}}
+
+
     <style>
         /* Fade-in animation */
         @keyframes fadeIn {
@@ -22,7 +31,7 @@
         .animate-bounce-slow.delay-400 { animation-delay: 0.4s; }
     </style>
 </head>
-<body class="font-sans antialiased bg-gray-100 text-gray-900">
+<body class="bg-gray-100 min-h-screen font-sans flex flex-col">
 
     {{-- Navbar --}}
     <nav class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 shadow-lg text-white relative">
@@ -134,16 +143,15 @@
             </div>
         </div>
     </section>
-    
     <div>
-   
+    {{-- Success is as dangerous as failure. --}}
 
     <div class="bg-white p-6 rounded-xl shadow-md mb-8">
             <h3 class="text-lg font-semibold text-gray-800 mb-4">Filter Records</h3>
 
             <form method="GET" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                   
+                    <!-- Filter by Topic -->
                     <div>
                         <label for="title" class="block text-sm font-medium text-gray-600 mb-2">Title</label>
                         <input type="text" id="title" name="filterTitle" value=""
@@ -151,7 +159,7 @@
                             placeholder="Enter topic">
                     </div>
 
-                    
+                    <!-- Filter by User Name -->
                     <div>
                         <label for="username" class="block text-sm font-medium text-gray-600 mb-2">User Name</label>
                         <input type="text" id="filterUsername" name="filterUsername" value=""
@@ -160,9 +168,9 @@
                     </div>
                 </div>
 
-               
+                <!-- Filter and Reset Buttons -->
                 <div class="flex gap-3">
-                   
+                    <!-- Filter Button -->
                     <button wire:click="render"
                         class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                bg-gradient-to-br from-purple-500 to-pink-500 hover:text-gray-100 focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
@@ -172,7 +180,7 @@
                         </span>
                     </button>
 
-                    
+                    <!-- Reset Button -->
                     <button wire:click="resetFilters"
                         class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                bg-gradient-to-br from-gray-400 to-gray-600 hover:text-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300">
@@ -244,7 +252,10 @@
 
 
 
- <footer class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white mt-20">
+
+        
+       {{-- Footer --}}
+    <footer class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 text-white mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
@@ -286,8 +297,6 @@
                 &copy; {{ date('Y') }} MyApp. All rights reserved.
             </div>
         </div>
-    </footer>
-        
- 
-
+    </footer>     
+</div>
 </div>

@@ -18,18 +18,14 @@
         @livewireStyles
     </head>
     <body>
-   
-            {{-- resources/views/layouts/livewire.blade.php --}}
-
-
+ 
 
     {{-- Livewire Component Slot --}}
     <main class="flex-1 py-10 px-4">
         {{ $slot }}
     </main>
 
-    {{-- Footer --}}
-   
+    
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>    
