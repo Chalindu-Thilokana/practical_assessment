@@ -56,7 +56,7 @@ class Posts extends Component
     public function openCreateModal()
     {
 
-        if (!Auth::check() || Auth::user()->userType !== 'user') {
+        if (!Auth::check() || Auth::user()->userType !== 'admin') {
         $this->resetForm();
         $this->showModal = true;
         } else {
