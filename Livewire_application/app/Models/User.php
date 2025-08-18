@@ -29,6 +29,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'userType',
     ];
 
     /**
@@ -63,5 +64,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+      public function post() {
+        return $this->belongsTo(Post::class);
     }
 }

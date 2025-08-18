@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Posts;
 use App\Livewire\User ;
 use App\Livewire\AddPost;   
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Livewire\UsersSystem;
+use App\Livewire\BlogSite;
 
+
+
+Route::get('/', BlogSite::class)->name('web.index');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -17,9 +19,19 @@ Route::middleware([
     //     return view('dashboard');
     // })->name('dashboard');
 
-Route::get('/dashboard', Posts::class)->name('dashboard');
-Route::get('/users', User::class)->name('users.index');
-Route::get('/posts', AddPost::class)->name('posts.index');
+              Route::get('/dashboard', Posts::class)->name('dashboard');
+
+
+
+        Route::middleware(['auth:sanctum', 'verified', 'userType:admin'])->group(function () {
+
+                    Route::get('/users', UsersSystem::class)->name('users.index');
+        });
+
+
+
+
+              Route::get('/posts', AddPost::class)->name('posts.index');
 
 
 });
