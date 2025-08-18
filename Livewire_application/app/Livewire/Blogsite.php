@@ -50,7 +50,7 @@ class BlogSite extends Component
             });
         }
 
-        $posts = $postsQuery->latest()->paginate(2
+        $posts = $postsQuery->latest()->paginate(12
     );
 
         return view('livewire.blogsite', [
