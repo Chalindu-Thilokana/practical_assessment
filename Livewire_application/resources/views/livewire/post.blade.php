@@ -97,7 +97,7 @@
 
                 <!-- Table -->
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 text-sm" id="tableid">
+                    <table class="min-w-full divide-y divide-gray-200 text-sm" id="table1">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-4 py-3 text-left text-gray-700 font-medium">Title</th>
@@ -252,9 +252,22 @@
     });
 </script>
 <script>
-        $(document).ready(function() {
-       <    $('#tableid').DataTable({
-                responsive: true,
-            });
+    function initializeDataTable() {
+        if ($.fn.DataTable.isDataTable('#table1')) {
+            $('#table1').DataTable().destroy();
+        }
+        $('#table1').DataTable({
+            responsive: true,
         });
-    </script>
+    }
+
+    // Initialize on page load
+    $(document).ready(function () {
+        initializeDataTable();
+    });
+
+    // Re-initialize after Livewire updates
+    document.addEventListener('livewire:update', function () {
+        initializeDataTable();
+    });
+</script>
