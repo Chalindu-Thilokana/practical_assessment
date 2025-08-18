@@ -14,6 +14,8 @@
 
          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -36,19 +38,23 @@
                        class="block py-2 px-3 rounded hover:bg-gray-700 {{ request()->routeIs('dashboard') ? 'bg-gray-700' : '' }}">
                         Dashboard
                     </a> --}}
- @php $current = Route::currentRouteName(); @endphp
+                         @php $current = Route::currentRouteName(); @endphp
 
-<a href="{{ route('dashboard') }}" wire:navigate
-   class="block px-4 py-2 rounded
-          {{ $current === 'dashboard' ? 'bg-gray-500 text-white' :  'text-white' }}">
-    Dashboard
-</a>            </li>
-                <li class="mb-4">
-                    <a href="{{ route('users.index') }}" wire:navigate
-   class="block px-4 py-2 rounded
-          {{ $current === 'users.index' ? 'bg-gray-500 text-white' : ' text-white' }}">Users
+                    <a href="{{ route('dashboard') }}" wire:navigate
+                         class="block px-4 py-2 rounded
+                                   {{ $current === 'dashboard' ? 'bg-gray-500 text-white' :  'text-white' }}">
+                               Dashboard
+                                </a>            </li>
+                               
+                          <li class="mb-4">
+                               @if(auth()->user()->userType === 'admin')
+                                 <a href="{{ route('users.index') }}" wire:navigate
+                        class="block px-4 py-2 rounded
+                         {{ $current === 'users.index' ? 'bg-gray-500 text-white' : ' text-white' }}">Users
                     </a>
+                    @endif
                 </li>
+                
             </ul>
         </nav>
     </aside>

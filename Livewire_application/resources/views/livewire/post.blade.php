@@ -15,8 +15,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Filter by Topic -->
                     <div>
-                        <label for="topic" class="block text-sm font-medium text-gray-600 mb-2">Topic</label>
-                        <input type="text" id="topic" name="topic" value=""
+                        <label for="title" class="block text-sm font-medium text-gray-600 mb-2">Title</label>
+                        <input type="text" id="title" name="filterTitle" value=""
                             class="w-full rounded-lg border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-gray-900 text-sm px-3 py-2.5 placeholder-gray-400 transition"
                             placeholder="Enter topic">
                     </div>
@@ -24,7 +24,7 @@
                     <!-- Filter by User Name -->
                     <div>
                         <label for="username" class="block text-sm font-medium text-gray-600 mb-2">User Name</label>
-                        <input type="text" id="username" name="username" value=""
+                        <input type="text" id="filterUsername" name="filterUsername" value=""
                             class="w-full rounded-lg border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 text-gray-900 text-sm px-3 py-2.5 placeholder-gray-400 transition"
                             placeholder="Enter user name">
                     </div>
@@ -33,7 +33,7 @@
                 <!-- Filter and Reset Buttons -->
                 <div class="flex gap-3">
                     <!-- Filter Button -->
-                    <button
+                    <button wire:click="render"
                         class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                bg-gradient-to-br from-purple-500 to-pink-500 hover:text-gray-100 focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
                         <span
@@ -43,7 +43,7 @@
                     </button>
 
                     <!-- Reset Button -->
-                    <button
+                    <button wire:click="resetFilters"
                         class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                bg-gradient-to-br from-gray-400 to-gray-600 hover:text-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300">
                         <span
@@ -54,6 +54,7 @@
                 </div>
             </form>
         </div>
+
 
         <!-- Content Section -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -66,6 +67,7 @@
                 <!-- Header Row -->
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
                     <!-- Add Post Button -->
+                     @if(auth()->user()->userType ==='user')
                     <button wire:click="openCreateModal"
                         class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                bg-gradient-to-br from-purple-600 to-blue-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -74,6 +76,7 @@
                             Add Post
                         </span>
                     </button>
+                    @endif
 
                     
                 </div>
@@ -94,7 +97,7 @@
 
                 <!-- Table -->
                 <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 text-sm" id="table1">
+                    <table class="min-w-full divide-y divide-gray-200 text-sm" id="tableid">
                         <thead class="bg-gray-50">
                             <tr>
                                 <th class="px-4 py-3 text-left text-gray-700 font-medium">Title</th>
@@ -105,15 +108,16 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
+                               @foreach($posts as $post)
                             <tr class="hover:bg-gray-50 transition">
-                                <td class="px-4 py-2">Sample Title</td>
-                                <td class="px-4 py-2">Sample content...</td>
-                                <td class="px-4 py-2">John Doe</td>
-                                <td class="px-4 py-2">2025-08-17</td>
+                                <td class="px-4 py-2">{{ $post->title }}</td>
+                                <td class="px-4 py-2">{{ $post->content }}</td>
+                                <td class="px-4 py-2">{{ $post->user->name }}</td>
+                                <td class="px-4 py-2">{{ $post->created_at }}</td>
                                 <td class="px-4 py-2">
                                     <div class="flex gap-2">
                                         <!-- Edit Button (Green) -->
-                                        <button
+                                        <button wire:click="openEditModal({{ $post->id }})"
                                             class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                                    bg-gradient-to-br from-green-500 to-lime-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300">
                                             <span
@@ -123,7 +127,7 @@
                                         </button>
 
                                         <!-- Delete Button (Red) -->
-                                        <button
+                                        <button wire:click="softdelete({{ $post->id }})"
                                             class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group
                                                    bg-gradient-to-br from-red-500 to-pink-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300">
                                             <span
@@ -134,6 +138,7 @@
                                     </div>
                                 </td>
                             </tr>
+                           @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -141,12 +146,14 @@
 
             <!-- Right Section -->
             <div class="bg-white p-6 rounded-xl shadow flex flex-col">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Right Section</h3>
-                <p class="text-gray-600 text-sm">You can add charts, stats, or additional widgets here.</p>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">posts details represts charts</h3>
+                <p class="text-gray-600 text-sm">You want to see on this chart "how many posts are relevant to you?" 😊.</p>
+                <canvas id="postsChart" width="400" height="200"></canvas>
+                
+
             </div>
         </div>
     </div>
-
 
 
 
@@ -198,30 +205,56 @@
 
 
 
+<div>
 
 
 
-</div>
-
-<script>
-    window.addEventListener('swal:modal', event => {
-        Swal.fire({
-            title: event.detail.title,
-            text: event.detail.text || '',
-            icon: event.detail.icon,
-            timer: event.detail.timer || 2000,
-            showConfirmButton: false
-        });
-    });
-</script>
 
 
-<!-- DataTables Initialization -->
-<script>
-    $(document).ready(function() {
-        $('#table1').DataTable({
+
+
+
+
+
+
+
+
+<<script>
+    let ctx = document.getElementById('postsChart').getContext('2d');
+    let postsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: @json($dates),
+            datasets: [{
+                label: 'Posts Created',
+                data: @json($postCounts),
+                fill: false,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                tension: 0.1
+            }]
+        },
+        options: {
             responsive: true,
-            // Additional DataTable configurations can be added here
-        });
+            scales: {
+                y: { beginAtZero: true, ticks: { stepSize: 1 } }
+            }
+        }
+    });
+
+    // Listen for Livewire 3 dispatched event
+    window.addEventListener('livewire:chartUpdated', event => {
+        // Make sure chart exists
+        if (postsChart) {
+            postsChart.data.labels = event.detail.dates;
+            postsChart.data.datasets[0].data = event.detail.postCounts;
+            postsChart.update();
+        }
     });
 </script>
+<script>
+        $(document).ready(function() {
+       <    $('#tableid').DataTable({
+                responsive: true,
+            });
+        });
+    </script>

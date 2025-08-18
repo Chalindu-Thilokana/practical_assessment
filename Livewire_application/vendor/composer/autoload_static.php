@@ -192,7 +192,6 @@ class ComposerStaticInite5fbbe6137dc77bcd5b6646b5dd75b52
         ),
         'A' => 
         array (
-            'App\\Http\\Livewire\\' => 18,
             'App\\' => 4,
         ),
     );
@@ -590,10 +589,6 @@ class ComposerStaticInite5fbbe6137dc77bcd5b6646b5dd75b52
         array (
             0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
         ),
-        'App\\Http\\Livewire\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/app/Http/Livewire',
-        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -616,7 +611,11 @@ class ComposerStaticInite5fbbe6137dc77bcd5b6646b5dd75b52
         'App\\Factories\\ConfigurationFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationFactory.php',
         'App\\Factories\\ConfigurationResolverFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationResolverFactory.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Middleware\\CheckRole' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckRole.php',
         'App\\Kernel' => __DIR__ . '/..' . '/laravel/pint/app/Kernel.php',
+        'App\\Livewire\\AddPost' => __DIR__ . '/../..' . '/app/Livewire/AddPost.php',
+        'App\\Livewire\\Posts' => __DIR__ . '/../..' . '/app/Livewire/Posts.php',
+        'App\\Livewire\\UsersSystem' => __DIR__ . '/../..' . '/app/Livewire/UsersSystem.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Output\\Concerns\\InteractsWithSymbols' => __DIR__ . '/..' . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',
