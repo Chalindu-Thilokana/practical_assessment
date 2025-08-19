@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2025 at 01:11 PM
+-- Generation Time: Aug 19, 2025 at 06:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,8 +42,8 @@ INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
 ('0c827637ba77c621d0421ac8086dc66f:timer', 'i:1755473622;', 1755473622),
 ('0dcc4a7570ec850784f60f4ad80487f1', 'i:1;', 1755503841),
 ('0dcc4a7570ec850784f60f4ad80487f1:timer', 'i:1755503841;', 1755503841),
-('30d57457540b275d883e899ce510666f', 'i:1;', 1755512293),
-('30d57457540b275d883e899ce510666f:timer', 'i:1755512293;', 1755512293);
+('30d57457540b275d883e899ce510666f', 'i:1;', 1755516959),
+('30d57457540b275d883e899ce510666f:timer', 'i:1755516959;', 1755516959);
 
 -- --------------------------------------------------------
 
@@ -186,12 +186,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `user_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(3, 'jm', 'gembsa', 3, '2025-08-17 19:16:26', '2025-08-17 22:57:33', NULL),
 (4, 'wefrwe', 'f3wqef', 5, '2025-08-18 00:13:09', '2025-08-18 00:13:09', NULL),
 (5, 'rgfwer4gferw4', 'gregf4etfg', 5, '2025-08-18 00:13:14', '2025-08-18 00:13:14', NULL),
 (6, 'thrherth', 'egtrger4hg', 5, '2025-08-18 00:14:01', '2025-08-18 00:14:01', NULL),
 (7, 'cx cx', 'v dxcv ', 6, '2025-08-18 03:41:58', '2025-08-18 03:41:58', NULL),
-(8, 'thgt', 'njgtfjynt', 6, '2025-08-18 03:48:44', '2025-08-18 04:04:09', '2025-08-18 04:04:09');
+(8, 'thgt', 'njgtfjynt', 6, '2025-08-18 03:48:44', '2025-08-18 04:04:09', '2025-08-18 04:04:09'),
+(9, 'gjnmtyfghjntfdrg', 'jnfgjntfgyjntfcgrjntfrgjn', 7, '2025-08-18 05:52:18', '2025-08-18 05:52:18', NULL);
 
 -- --------------------------------------------------------
 
@@ -213,8 +213,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('DsyLBROwQECxZHLC2vu2o6kfY1f2AYVk2LQSvMCD', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoieW10Q0NoWTJlaHhXZUJHR0hwNU90YWVhS1NUR3VOSG9kWmdVMVBiayI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fX0=', 1755512671),
-('V6YEoi6vwG9DEwARMsB172wjb0stPcQZuE3ex9hk', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiY3Z6TE96V1c4WnRaeW4xRGNhclFiSXVwQVZtUjVXWFJ1M29pVTdPSyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czoyNzoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL3VzZXJzIjt9czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1755506767);
+('nNIIzwtXZaHQWtteznPKWo8Sa1ksVHoDK73BChJg', 7, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicnQ0cWxjdlhXeHY5dU51eENpd3hSSFFqUjI0T2RaZ1R6ajBiengwRSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NztzOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMiRDZTZ4SU5FZ0hXa1lxTnhEdnpZeEpPOWRlWDd1SkxZcmt4UjJRS2w3cHZtSVF3bGk5SDZxbSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1755578597);
 
 -- --------------------------------------------------------
 
@@ -244,11 +243,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `userType`) VALUES
-(3, 'hutha', 'user2@gmail.com', NULL, '$2y$12$Qz/twMUgxIvz.2bes6HR7ewkeGA2OwbLXZF6cJE4C.Itx424HSH8C', NULL, NULL, NULL, NULL, NULL, NULL, '2025-08-17 18:02:57', '2025-08-17 19:57:00', 'user'),
 (4, 'hmmm', 'testadmin@gmail.com', NULL, '$2y$12$wfJgd5Slm03ZC1OL7PjW6uAYNnPKbVv4N6vwB45Mu2WO1cxMyyayW', NULL, NULL, NULL, NULL, NULL, NULL, '2025-08-17 19:16:58', '2025-08-18 04:19:50', 'admin'),
 (5, 'chalindu', 'testadminsw@gmail.com', NULL, '$2y$12$kSnpRJvPaQUo3uNRubKowOSJ62UQDsJf.dTM4555Gjf9txSqydrk.', NULL, NULL, NULL, 'F8is2mgpwZVdplNX4sItzkxFo1LrIrOBaasjHyLHmP61V1ryTUGMcMj6E5cP', NULL, NULL, '2025-08-18 00:12:23', '2025-08-18 00:12:23', 'user'),
 (6, 'chalindu', 'testadmin23@gmail.com', NULL, '$2y$12$8OruUhcyO8Ys2YW5.YDqf..pykQc2FkfXKH83TSA4OJhCeG4Z3.bK', NULL, NULL, NULL, NULL, NULL, NULL, '2025-08-18 03:16:41', '2025-08-18 03:16:41', 'admin'),
-(7, 'Admin', 'testadmin2@gmail.com', NULL, '$2y$12$Ce6xINEgHWkYqNxDvzYxJO9deX7uJLYrkxR2QKl7pvmIQwli9H6qm', NULL, NULL, NULL, NULL, NULL, NULL, '2025-08-18 04:31:56', '2025-08-18 04:31:56', 'admin');
+(7, 'Admin', 'testadmin2@gmail.com', NULL, '$2y$12$Ce6xINEgHWkYqNxDvzYxJO9deX7uJLYrkxR2QKl7pvmIQwli9H6qm', NULL, NULL, NULL, 'EXaD0PDKqVULrqgggmTRbxff03sOCb986OE0DlkBQVcg6oOHtDnlFoIF6CUs', NULL, NULL, '2025-08-18 04:31:56', '2025-08-18 05:48:40', 'user');
 
 --
 -- Indexes for dumped tables
@@ -361,7 +359,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
