@@ -193,9 +193,19 @@
             </form>
         </div>
 
+        
+    <div class="text-center mb-6">
+    <h3 class="text-2xl font-bold text-gray-800">Posts</h3>
+    <p class="text-gray-600 text-sm max-w-xl mx-auto leading-relaxed mt-2">
+        A collection of user blog posts for everyone to explore.
+    </p>
+</div>
 
     <div class="min-h-screen bg-gradient-to-r from-purple-600 via-pink-500 to-orange-400 flex justify-center items-start py-12">
-    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+   
+   
+        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+        
 
         @forelse($posts as $post)
             
